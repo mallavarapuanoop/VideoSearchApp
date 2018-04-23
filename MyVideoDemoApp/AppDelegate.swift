@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         UINavigationBar.appearance().barTintColor = UIColor.init(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         GIDSignIn.sharedInstance().clientID = "629051514727-iqid38fkvovv4k39emeq7macgp7laqhn.apps.googleusercontent.com"//"985955874773-602gtdnagabcuvho9fjjmt38i7tsn1ff.apps.googleusercontent.com"
-        
      return true
     }
 

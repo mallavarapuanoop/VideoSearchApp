@@ -32,9 +32,6 @@ class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionVi
         mainSearchBar.delegate = self
         loadVideos(searchString: "")
     }
-    
-    
-    
 
     
     //MARK:checking login and if not presenting login view controller

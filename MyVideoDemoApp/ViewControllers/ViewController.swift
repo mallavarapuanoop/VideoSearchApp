@@ -13,12 +13,6 @@ import GoogleSignIn
 
 
 class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
-    
-    
-    
-    
-    
-
     var googleSignInButton = GIDSignInButton.init(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
     
     override func viewDidLoad() {

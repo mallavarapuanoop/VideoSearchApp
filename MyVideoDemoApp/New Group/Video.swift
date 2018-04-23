@@ -13,7 +13,4 @@ struct Video {
     var thumbnailImage:String
     var title:String
     
-    
-   
-    
 }
