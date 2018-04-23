@@ -13,8 +13,6 @@ class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionVi
 
     var videosArray = [Video]()
    
-    
-    
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var mainSearchBar: UISearchBar!
     

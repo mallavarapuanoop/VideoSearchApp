@@ -59,13 +59,6 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
-		034F02DC208CC29F00011236 /* extras */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = extras;
-			sourceTree = "<group>";
-		};
 		03A56FB6208BEFC100A0439D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +94,6 @@
 				03E0820A2088008A00CBAC6D /* Main.storyboard */,
 				03A56FB6208BEFC100A0439D /* ViewControllers */,
 				034417B4208E3A360046AF36 /* New Group */,
-				034F02DC208CC29F00011236 /* extras */,
 				03E0820D2088008C00CBAC6D /* Assets.xcassets */,
 				03E0820F2088008C00CBAC6D /* LaunchScreen.storyboard */,
 				03E082122088008C00CBAC6D /* Info.plist */,
