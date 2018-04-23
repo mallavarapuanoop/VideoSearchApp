@@ -13,13 +13,31 @@ import GoogleSignIn
 
 
 class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
-    var googleSignInButton = GIDSignInButton.init(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+    
+    
+    func addGoogleBtn(){
+        let googleSignInButton : UIButton = {
+            let button = UIButton ()
+            button.backgroundColor = UIColor.white
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.addTarget(self, action: #selector(signIn), for: .touchUpInside)
+            button.layer.cornerRadius = 5
+            button.setTitle("SIGN IN", for: .normal )
+            button.setTitleColor(UIColor.black, for: .normal)
+            //button.backgroundColor = UIColor.lightGray
+            return button
+            }()
+        view.addSubview(googleSignInButton)
+        
+        googleSignInButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        googleSignInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        googleSignInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        googleSignInButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    googleSignInButton.center = view.center
-    view.addSubview(googleSignInButton)
+    addGoogleBtn()
     GIDSignIn.sharedInstance().uiDelegate = self
     GIDSignIn.sharedInstance().delegate = self
        
