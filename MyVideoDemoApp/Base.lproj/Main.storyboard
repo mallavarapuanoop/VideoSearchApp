@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xzG-Xz-Agf">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="MyVideoDemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1428" y="728"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="XmS-na-ZrM">
+            <objects>
+                <viewController id="zX1-9b-5tt" customClass="SearchViewController" customModule="MyVideoDemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hKs-Mn-FHL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="x2Q-2v-Dqf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gnT-1n-kDM">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vle-4T-lb3">
+                                    <size key="itemSize" width="335" height="291"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellId" id="Mrs-Fl-3C1" customClass="CollectionViewCell" customModule="MyVideoDemoApp" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="10" width="335" height="291"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="291"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XIv-6C-eTJ">
+                                                    <rect key="frame" x="13" y="13" width="309" height="265"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="this is the vedio label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iY3-Xs-Rab">
+                                                    <rect key="frame" x="8" y="28" width="319" height="26.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="iY3-Xs-Rab" secondAttribute="trailing" id="Dq3-3G-MxP"/>
+                                            <constraint firstItem="iY3-Xs-Rab" firstAttribute="leading" secondItem="Mrs-Fl-3C1" secondAttribute="leadingMargin" id="IaC-hp-A6c"/>
+                                            <constraint firstItem="iY3-Xs-Rab" firstAttribute="top" secondItem="Mrs-Fl-3C1" secondAttribute="topMargin" constant="20" id="MRu-iU-qi3"/>
+                                            <constraint firstItem="iY3-Xs-Rab" firstAttribute="centerX" secondItem="Mrs-Fl-3C1" secondAttribute="centerX" id="WrC-zn-h0W"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="thumnailImage" destination="XIv-6C-eTJ" id="qYs-yA-ukH"/>
+                                            <outlet property="videoTitlelabel" destination="iY3-Xs-Rab" id="zCP-9T-xqB"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="zX1-9b-5tt" id="fR1-UI-C1g"/>
+                                    <outlet property="delegate" destination="zX1-9b-5tt" id="ORj-KJ-jJc"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gnT-1n-kDM" firstAttribute="trailing" secondItem="S7A-63-vTQ" secondAttribute="trailing" id="7Xz-SM-DIx"/>
+                            <constraint firstItem="gnT-1n-kDM" firstAttribute="leading" secondItem="S7A-63-vTQ" secondAttribute="leading" id="D9V-Gg-i69"/>
+                            <constraint firstItem="gnT-1n-kDM" firstAttribute="bottom" secondItem="S7A-63-vTQ" secondAttribute="bottom" id="Hev-vm-tYZ"/>
+                            <constraint firstItem="x2Q-2v-Dqf" firstAttribute="leading" secondItem="S7A-63-vTQ" secondAttribute="leading" id="K5J-Ca-xGs"/>
+                            <constraint firstItem="x2Q-2v-Dqf" firstAttribute="top" secondItem="S7A-63-vTQ" secondAttribute="top" id="UWX-dr-NhB"/>
+                            <constraint firstItem="gnT-1n-kDM" firstAttribute="top" secondItem="x2Q-2v-Dqf" secondAttribute="bottom" id="YBk-Jw-qhk"/>
+                            <constraint firstItem="x2Q-2v-Dqf" firstAttribute="trailing" secondItem="S7A-63-vTQ" secondAttribute="trailing" id="s74-ZV-NHi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="S7A-63-vTQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ovr-IV-xv5">
+                        <barButtonItem key="rightBarButtonItem" title="SignOut" id="QOj-Ng-7NX">
+                            <connections>
+                                <action selector="signoutButton:" destination="zX1-9b-5tt" id="TiF-hF-yos"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mainCollectionView" destination="gnT-1n-kDM" id="JPr-xw-7E9"/>
+                        <outlet property="mainSearchBar" destination="x2Q-2v-Dqf" id="acX-bZ-0HF"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="toLogin" id="bEy-DU-mvJ"/>
+                        <segue destination="dkL-6o-28a" kind="presentation" identifier="toDetail" id="6ka-7I-hzB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9B5-1E-NlQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1428" y="-77.811094452773617"/>
+        </scene>
+        <!--Video Player View Controller-->
+        <scene sceneID="a3E-1Y-7Z4">
+            <objects>
+                <viewController storyboardIdentifier="videoPlayController" id="dkL-6o-28a" customClass="VideoPlayerViewController" customModule="MyVideoDemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ugg-TZ-Htg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rFX-2K-Qoi"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lj9-3L-SE6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2257" y="-78"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kNq-lw-c0O">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xzG-Xz-Agf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ltH-OA-IIF">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zX1-9b-5tt" kind="relationship" relationship="rootViewController" id="xkA-SE-R0j"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ccb-m3-4yl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="511" y="-87"/>
+        </scene>
+    </scenes>
+</document>
