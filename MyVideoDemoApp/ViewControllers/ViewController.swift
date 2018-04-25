@@ -24,12 +24,12 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             button.layer.cornerRadius = 5
             button.setTitle("SIGN IN", for: .normal )
             button.setTitleColor(UIColor.black, for: .normal)
-            //button.backgroundColor = UIColor.lightGray
+            button.backgroundColor = UIColor.red
             return button
             }()
         view.addSubview(googleSignInButton)
         
-        googleSignInButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        googleSignInButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         googleSignInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         googleSignInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         googleSignInButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -41,6 +41,10 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     GIDSignIn.sharedInstance().uiDelegate = self
     GIDSignIn.sharedInstance().delegate = self
        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {

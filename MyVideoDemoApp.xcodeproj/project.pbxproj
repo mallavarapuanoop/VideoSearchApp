@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03723AEF208E6DC8007C6249 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03723AEE208E6DC8007C6249 /* VideoPlayerViewController.swift */; };
+		03723AF1208E6FAC007C6249 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03723AF0208E6FAC007C6249 /* TransitionAnimator.swift */; };
 		03A56F8D208BA98900A0439D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A56F8C208BA98900A0439D /* SearchViewController.swift */; };
 		03A56F8F208BC08300A0439D /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A56F8E208BC08300A0439D /* CollectionViewCell.swift */; };
 		03A56F93208BC35E00A0439D /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A56F92208BC35E00A0439D /* Video.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03723AEE208E6DC8007C6249 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		03723AF0208E6FAC007C6249 /* TransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		03A56F8C208BA98900A0439D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		03A56F8E208BC08300A0439D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		03A56F92208BC35E00A0439D /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
@@ -50,13 +54,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		034417B4208E3A360046AF36 /* New Group */ = {
+		034417B4208E3A360046AF36 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				03723AF0208E6FAC007C6249 /* TransitionAnimator.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		03723AF2208E8E7F007C6249 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				03A56F92208BC35E00A0439D /* Video.swift */,
-				03A56FB4208BE48100A0439D /* HideKeyboard.swift */,
 			);
-			path = "New Group";
+			path = Model;
 			sourceTree = "<group>";
 		};
 		03A56FB6208BEFC100A0439D /* ViewControllers */ = {
@@ -64,6 +75,7 @@
 			children = (
 				03E082082088008A00CBAC6D /* ViewController.swift */,
 				03A56F8C208BA98900A0439D /* SearchViewController.swift */,
+				03723AEE208E6DC8007C6249 /* VideoPlayerViewController.swift */,
 				03A56F8E208BC08300A0439D /* CollectionViewCell.swift */,
 			);
 			path = ViewControllers;
@@ -93,7 +105,9 @@
 				03E082062088008900CBAC6D /* AppDelegate.swift */,
 				03E0820A2088008A00CBAC6D /* Main.storyboard */,
 				03A56FB6208BEFC100A0439D /* ViewControllers */,
-				034417B4208E3A360046AF36 /* New Group */,
+				034417B4208E3A360046AF36 /* Animation */,
+				03723AF2208E8E7F007C6249 /* Model */,
+				03A56FB4208BE48100A0439D /* HideKeyboard.swift */,
 				03E0820D2088008C00CBAC6D /* Assets.xcassets */,
 				03E0820F2088008C00CBAC6D /* LaunchScreen.storyboard */,
 				03E082122088008C00CBAC6D /* Info.plist */,
@@ -264,8 +278,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				03A56FB5208BE48100A0439D /* HideKeyboard.swift in Sources */,
+				03723AF1208E6FAC007C6249 /* TransitionAnimator.swift in Sources */,
 				03A56F8D208BA98900A0439D /* SearchViewController.swift in Sources */,
 				03A56F93208BC35E00A0439D /* Video.swift in Sources */,
+				03723AEF208E6DC8007C6249 /* VideoPlayerViewController.swift in Sources */,
 				03E082092088008A00CBAC6D /* ViewController.swift in Sources */,
 				03A56F8F208BC08300A0439D /* CollectionViewCell.swift in Sources */,
 				03E082072088008900CBAC6D /* AppDelegate.swift in Sources */,

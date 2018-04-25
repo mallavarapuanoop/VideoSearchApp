@@ -12,6 +12,9 @@ import GoogleSignIn
 class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {
 
     var videosArray = [Video]()
+    var selectedCell = CollectionViewCell()
+    let transition = TransitionAnimator()
+    
    
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var mainSearchBar: UISearchBar!
@@ -22,11 +25,15 @@ class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionVi
         
       
         checkLogin()
-        navigationItem.title = "Youtube Search"
-        navigationItem.largeTitleDisplayMode = .always
-        self.navigationController?.navigationBar.tintColor = UIColor.white
+        navigationItem.title = "Video Search"
+        self.navigationController?.navigationBar.tintColor = UIColor.blue
+        
+        transition.dismissCompletion = {
+            self.selectedCell.isHidden = false
+        }
 
        self.hideKeyboard()
+        
         mainSearchBar.delegate = self
         loadVideos(searchString: "")
     }
@@ -122,7 +129,7 @@ class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionVi
                 }
                 
             } catch let error {
-                print(error)//.localizedDescription)
+                print(error.localizedDescription)
             }
             
             
@@ -144,23 +151,48 @@ class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionVi
         return cell
     }
     
-      
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width - 35 , height: view.frame.width - 35)
+    }
     
-   
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "videoPlayController") as? VideoPlayerViewController else {
+            return print("Could not instantiate view controller with identifier of type VideoPlayerViewController")
+        }
+        selectedCell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+        vc.transitioningDelegate = self
+        self.navigationController?.present(vc, animated: true, completion: nil)
+        vc.video = videosArray[indexPath.item]
+        
+        
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
 
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
+}
+
+//MARK: Transition
+extension SearchViewController: UIViewControllerTransitioningDelegate {
     
     
-
-
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        guard let originFrame = selectedCell.superview?.convert(selectedCell.frame, to: nil) else {
+            return transition
+        }
+        transition.originFrame = originFrame
+        transition.presenting = true
+        selectedCell.isHidden = true
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.presenting = false
+        return transition
+    }
 }
 
