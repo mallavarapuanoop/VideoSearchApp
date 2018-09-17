@@ -28,7 +28,6 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             return button
             }()
         view.addSubview(googleSignInButton)
-        
         googleSignInButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         googleSignInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         googleSignInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -42,22 +41,25 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     GIDSignIn.sharedInstance().delegate = self
        
     }
+    //this makes the view will apperar 
     override func viewWillAppear(_ animated: Bool) {
         
         
     }
 
     override func viewDidAppear(_ animated: Bool) {
-    let signIn = GIDSignIn.sharedInstance()
-    signIn?.scopes = ["https://www.googleapis.com/auth/plus.login","https://www.googleapis.com/auth/plus.me"]
-    guard let check = signIn?.hasAuthInKeychain() else {return}
-        if check {
-            print("Signed in")
-            UserDefaults.standard.set(false, forKey: "guestLogin")
-            self.dismiss(animated: true, completion: nil)
-            } else {
-            print("Not signed in")
-            }
+        let signIn = GIDSignIn.sharedInstance()
+        
+        //signIn?.scopes
+        signIn?.scopes = ["https://www.googleapis.com/auth/plus.login","https://www.googleapis.com/auth/plus.me"]
+        guard let check = signIn?.hasAuthInKeychain() else {return}
+            if check {
+                //print("Signed in")
+                //UserDefaults.standard.set(false, forKey: "guestLogin")
+                self.dismiss(animated: true, completion: nil)
+                } else {
+                print("Not signed in")
+                }
      }
     
     
@@ -73,5 +75,10 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             return
         }
      }
+    
+    
+    
+    
+    
 }
 

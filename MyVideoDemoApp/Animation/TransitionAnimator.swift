@@ -24,7 +24,10 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        
+        
         let containerView = transitionContext.containerView
+        
         guard let toView = transitionContext.view(forKey: .to), let detailView = presenting ? toView: transitionContext.view(forKey: .from) else {
             return
         }
@@ -41,8 +44,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         }
         containerView.addSubview(toView)
         containerView.bringSubview(toFront: detailView)
-        if presenting {
-            //update opening animation
+        if presenting {     //update opening animation
             UIView.animate(withDuration: durationExpanding, delay:0.0,
                            usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0,
                            //gives it some bounce to make the transition look neater than if you have defaults

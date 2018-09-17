@@ -29,8 +29,8 @@ class VideoPlayerViewController: UIViewController, YouTubePlayerDelegate {
     }()
     
     var videoPlayer : YouTubePlayerView = {
-        let vPlayer = YouTubePlayerView()
-        vPlayer.translatesAutoresizingMaskIntoConstraints = false
+    let vPlayer = YouTubePlayerView()
+    vPlayer.translatesAutoresizingMaskIntoConstraints = false
         return vPlayer
     }()
     
@@ -50,9 +50,8 @@ class VideoPlayerViewController: UIViewController, YouTubePlayerDelegate {
         setupUI()
         videoPlayer.delegate = self
         didCamefromOreintation = UIDevice.current.orientation
-        
-
     }
+    
     func setupUI() {
        view.addSubview(scrollView)
         scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
@@ -73,36 +72,33 @@ class VideoPlayerViewController: UIViewController, YouTubePlayerDelegate {
         videoPlayer.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
         let videoPlayerHeight = (view.frame.width/16) * 9
         videoPlayer.heightAnchor.constraint(equalToConstant: videoPlayerHeight).isActive = true
-        
-    }
+     }
     
     override func viewDidLayoutSubviews() {
         scrollView.contentSize = CGSize(width:self.view.frame.size.width, height: 1000)
     }
     
     @objc func dismissButtonPressed() {
-        
-        print(UIDevice.current.orientation.isPortrait)
-        
+
         if  didCamefromOreintation == UIDeviceOrientation.landscapeRight && UIDevice.current.orientation.isPortrait {
-            
+
             let value =  UIInterfaceOrientation.landscapeLeft.rawValue
             UIDevice.current.setValue(value, forKey: "orientation")
             UIViewController.attemptRotationToDeviceOrientation()
-            
+
         } else if didCamefromOreintation == UIDeviceOrientation.landscapeLeft && UIDevice.current.orientation.isPortrait {
-            
+
             let value =  UIInterfaceOrientation.landscapeRight.rawValue
             UIDevice.current.setValue(value, forKey: "orientation")
             UIViewController.attemptRotationToDeviceOrientation()
-            
+
         } else if !UIDevice.current.orientation.isPortrait {
-            
+
             let value =  UIInterfaceOrientation.portrait.rawValue
             UIDevice.current.setValue(value, forKey: "orientation")
             UIViewController.attemptRotationToDeviceOrientation()
         }
-        
+
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -110,6 +106,8 @@ class VideoPlayerViewController: UIViewController, YouTubePlayerDelegate {
     func playerReady(_ videoPlayer: YouTubePlayerView) {
         videoPlayer.play()
     }
+    
+
     
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         var text=""

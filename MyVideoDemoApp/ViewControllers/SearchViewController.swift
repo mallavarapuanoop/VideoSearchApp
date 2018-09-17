@@ -9,8 +9,11 @@
 import UIKit
 import GoogleSignIn
 
-class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {
-
+class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource { //, 
+    
+   //The UICollectionViewDelegateFlowLayout protocol defines methods that let you coordinate with a UICollectionViewFlowLayout object to implement a grid-based layout. The methods of this protocol define the size of items and the spacing between items in the grid.
+    
+    
     var videosArray = [Video]()
     var selectedCell = CollectionViewCell()
     let transition = TransitionAnimator()
@@ -22,15 +25,14 @@ class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      
-        checkLogin()
+       checkLogin()
         navigationItem.title = "Video Search"
         self.navigationController?.navigationBar.tintColor = UIColor.blue
         
         transition.dismissCompletion = {
             self.selectedCell.isHidden = false
         }
+        
 
        self.hideKeyboard()
         
@@ -51,8 +53,10 @@ class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionVi
             presentLoginController()
         }
     }
+    
     func presentLoginController() {
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? ViewController else {
+            
             return print("Could not instantiate view controller with identifier of type SecondViewController")
         }
         self.present(vc, animated: true, completion: nil)
@@ -77,6 +81,7 @@ class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionVi
         }
         
     }
+    
     func formatString(string: String) -> String {
         let newString = string.replacingOccurrences(of: " ", with: "+")
         return newString
@@ -88,6 +93,8 @@ class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionVi
         let urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=\(querryString)&type=video&key=AIzaSyB9-UWwhs6edZ_dNVEZ_hEexW9wEp1ZfbA"
         //print(urlString)
         let url = URL(string: urlString)
+        
+        
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             
             if let err = error {
@@ -95,9 +102,7 @@ class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionVi
             }
             guard let dataa = data else {return}
             do {
-                
                 if let jsonData = try JSONSerialization.jsonObject(with: dataa, options: []) as? [String:Any]{
-                    
                     guard let items = jsonData["items"] as? [[String:Any]] else {return}
                     //print(items)
                     self.videosArray = []
@@ -105,20 +110,15 @@ class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionVi
                         
                         guard let id = item["id"] as? [String:Any] else{return}
                         guard let videoId = id["videoId"] as? String else {return}
+                       // print(videoId)
                         
                         guard let snippet = item["snippet"] as? [String:Any] else{return}
                         guard let title = snippet["title"] as? String else {return}
                         guard let thumbnails = snippet["thumbnails"] as? [String:Any] else{return}
                         guard let mediumThumbnail = thumbnails["medium"] as? [String:Any] else{return}
                         guard let mediumThumbnailImage = mediumThumbnail["url"] as? String else {return}
-//                        print("********")
-//                        print(videoId)
-//                        print(mediumThumbnailImage)
-//                        print("********")
-
-                        let video = Video(videoId: videoId, thumbnailImage: mediumThumbnailImage, title: title)
+                      let video = Video(videoId: videoId, thumbnailImage: mediumThumbnailImage, title: title)
                         self.videosArray.append(video)
-                        
                     }
                     
                     DispatchQueue.main.async {
@@ -151,8 +151,9 @@ class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionVi
         return cell
     }
     
+    //UICollectionViewDelegateFlowLayout giving constraints to cells height and width
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - 35 , height: view.frame.width - 35)
+        return CGSize(width: view.frame.width  , height: 250)//view.frame.width - 35)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -163,21 +164,24 @@ class SearchViewController: UIViewController,UISearchBarDelegate, UICollectionVi
         selectedCell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
         vc.transitioningDelegate = self
         self.navigationController?.present(vc, animated: true, completion: nil)
+        
+        
         vc.video = videosArray[indexPath.item]
         
         
     }
-    
+    // giving line spacing between the cells in collection view
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 5
     }
+    
+    
 
 
 }
 
 //MARK: Transition
 extension SearchViewController: UIViewControllerTransitioningDelegate {
-    
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
